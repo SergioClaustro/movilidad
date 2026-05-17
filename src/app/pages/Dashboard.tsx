@@ -4,6 +4,7 @@ import { Sidebar } from "../components/Sidebar";
 import { MapView } from "../components/MapView";
 import { OccupancyBadge } from "../components/OccupancyBadge";
 import { useNavigate } from "react-router";
+import { useMemo } from "react";
 
 export function Dashboard() {
   const navigate = useNavigate();
@@ -21,12 +22,12 @@ export function Dashboard() {
     { route: "Bus 7", destination: "Universidad", time: "12 min", occupancy: "high" as const },
   ];
 
-  const mapMarkers = [
-    { lat: 0.5, lng: 0.5, label: "Tú", type: "user" as const },
-    { lat: 0.3, lng: 0.4, label: "Calle Principal", type: "stop" as const },
-    { lat: 0.6, lng: 0.7, label: "Central", type: "stop" as const },
-    { lat: 0.7, lng: 0.3, label: "Parque", type: "stop" as const },
-  ];
+  const mapMarkers = useMemo(() => [
+    { lat: 20.6597, lng: -103.3496, label: "Tú", type: "user" as const },
+    { lat: 20.6540, lng: -103.3550, label: "Calle Principal", type: "stop" as const },
+    { lat: 20.6650, lng: -103.3420, label: "Central", type: "stop" as const },
+    { lat: 20.6720, lng: -103.3580, label: "Parque", type: "stop" as const },
+  ], []);
 
   return (
     <div className="min-h-screen bg-background flex flex-col">

@@ -3,6 +3,7 @@ import { Navbar } from "../components/Navbar";
 import { Sidebar } from "../components/Sidebar";
 import { MapView } from "../components/MapView";
 import { useNavigate, useParams } from "react-router";
+import { useMemo } from "react";
 
 export function RouteDetail() {
   const navigate = useNavigate();
@@ -45,19 +46,21 @@ export function RouteDetail() {
     }
   };
 
-  const mapRoute = [
-    { lat: 0.2, lng: 0.3 },
-    { lat: 0.4, lng: 0.5 },
-    { lat: 0.6, lng: 0.7 },
-    { lat: 0.8, lng: 0.6 },
-  ];
+  // Ruta: Tlaquepaque -> Centro -> Zapopan
+  const mapRoute = useMemo(() => [
+    { lat: 20.6200, lng: -103.3100 }, // Tlaquepaque Centro
+    { lat: 20.6400, lng: -103.3300 }, // Cruce importante
+    { lat: 20.6597, lng: -103.3496 }, // Centro Guadalajara
+    { lat: 20.6800, lng: -103.3700 }, // Av. Vallarta
+    { lat: 20.7000, lng: -103.3900 }, // Zapopan
+  ], []);
 
-  const mapMarkers = [
-    { lat: 0.2, lng: 0.3, label: "Inicio", type: "user" as const },
-    { lat: 0.4, lng: 0.5, label: "Calle Principal", type: "stop" as const },
-    { lat: 0.6, lng: 0.7, label: "Central", type: "stop" as const },
-    { lat: 0.8, lng: 0.6, label: "Destino", type: "stop" as const },
-  ];
+  const mapMarkers = useMemo(() => [
+    { lat: 20.6200, lng: -103.3100, label: "Inicio", type: "user" as const },
+    { lat: 20.6400, lng: -103.3300, label: "Calle Principal", type: "stop" as const },
+    { lat: 20.6597, lng: -103.3496, label: "Central", type: "stop" as const },
+    { lat: 20.7000, lng: -103.3900, label: "Destino", type: "stop" as const },
+  ], []);
 
   return (
     <div className="min-h-screen bg-background flex flex-col">

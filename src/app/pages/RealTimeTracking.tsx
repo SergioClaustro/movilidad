@@ -4,22 +4,26 @@ import { Sidebar } from "../components/Sidebar";
 import { MapView } from "../components/MapView";
 import { OccupancyBadge } from "../components/OccupancyBadge";
 import { useNavigate, useParams } from "react-router";
+import { useMemo } from "react";
 
 export function RealTimeTracking() {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const mapRoute = [
-    { lat: 0.3, lng: 0.4 },
-    { lat: 0.5, lng: 0.5 },
-    { lat: 0.7, lng: 0.6 },
-  ];
+  // Ruta del bus: Plaza del Sol -> Av. Américas -> Plaza Patria
+  const mapRoute = useMemo(() => [
+    { lat: 20.6350, lng: -103.3850 }, // Plaza del Sol
+    { lat: 20.6450, lng: -103.3750 }, // Av. Américas
+    { lat: 20.6597, lng: -103.3496 }, // Centro Guadalajara
+    { lat: 20.6750, lng: -103.3250 }, // Av. Patria
+    { lat: 20.6850, lng: -103.3150 }, // Plaza Patria
+  ], []);
 
-  const mapMarkers = [
-    { lat: 0.3, lng: 0.4, label: "Inicio", type: "user" as const },
-    { lat: 0.5, lng: 0.5, label: "Bus", type: "vehicle" as const },
-    { lat: 0.7, lng: 0.6, label: "Destino", type: "stop" as const },
-  ];
+  const mapMarkers = useMemo(() => [
+    { lat: 20.6350, lng: -103.3850, label: "Inicio", type: "user" as const },
+    { lat: 20.6597, lng: -103.3496, label: "Bus", type: "vehicle" as const },
+    { lat: 20.6850, lng: -103.3150, label: "Destino", type: "stop" as const },
+  ], []);
 
   const nextStops = [
     { name: "Plaza Central", time: "2 min", status: "next" },

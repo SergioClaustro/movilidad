@@ -4,6 +4,7 @@ import { Sidebar } from "../components/Sidebar";
 import { MapView } from "../components/MapView";
 import { OccupancyBadge } from "../components/OccupancyBadge";
 import { useNavigate } from "react-router";
+import { useMemo } from "react";
 
 export function RouteResults() {
   const navigate = useNavigate();
@@ -57,17 +58,17 @@ export function RouteResults() {
     }
   };
 
-  const mapRoute = [
-    { lat: 0.2, lng: 0.3 },
-    { lat: 0.4, lng: 0.5 },
-    { lat: 0.6, lng: 0.7 },
-    { lat: 0.8, lng: 0.6 },
-  ];
+  // Ruta: Tlaquepaque -> Zapopan
+  const mapRoute = useMemo(() => [
+    { lat: 20.6200, lng: -103.3100 }, // Tlaquepaque
+    { lat: 20.6597, lng: -103.3496 }, // Centro
+    { lat: 20.7000, lng: -103.3900 }, // Zapopan
+  ], []);
 
-  const mapMarkers = [
-    { lat: 0.2, lng: 0.3, label: "Inicio", type: "user" as const },
-    { lat: 0.8, lng: 0.6, label: "Destino", type: "stop" as const },
-  ];
+  const mapMarkers = useMemo(() => [
+    { lat: 20.6200, lng: -103.3100, label: "Inicio", type: "user" as const },
+    { lat: 20.7000, lng: -103.3900, label: "Destino", type: "stop" as const },
+  ], []);
 
   return (
     <div className="min-h-screen bg-background flex flex-col">

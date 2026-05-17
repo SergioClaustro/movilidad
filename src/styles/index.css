@@ -1,3 +1,60 @@
-@import './fonts.css';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import 'leaflet/dist/leaflet.css';
 @import './tailwind.css';
 @import './theme.css';
+@import './fonts.css';
+
+/* Custom styles for Leaflet markers */
+.custom-marker {
+  background: transparent;
+  border: none;
+}
+
+.leaflet-container {
+  font-family: inherit;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 0;
+}
+
+/* Fix Leaflet marker icons */
+.leaflet-default-icon-path {
+  background-image: url('https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png');
+}
+
+/* Asegurar que el mapa se renderice correctamente */
+.leaflet-pane,
+.leaflet-tile,
+.leaflet-marker-icon,
+.leaflet-marker-shadow,
+.leaflet-tile-container,
+.leaflet-pane > svg,
+.leaflet-pane > canvas,
+.leaflet-zoom-box,
+.leaflet-image-layer,
+.leaflet-layer {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.leaflet-container {
+  overflow: hidden;
+  background: #ddd;
+}
+
+.leaflet-tile {
+  filter: inherit;
+  visibility: hidden;
+}
+
+.leaflet-tile-loaded {
+  visibility: inherit;
+}
+
+.leaflet-zoom-box {
+  width: 0;
+  height: 0;
+  box-sizing: border-box;
+  z-index: 800;
+}
