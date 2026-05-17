@@ -1,5 +1,11 @@
 import { useState } from "react";
-import { MapPin, Navigation, Clock, Home as HomeIcon, Briefcase } from "lucide-react";
+import {
+  MapPin,
+  Navigation,
+  Clock,
+  Home as HomeIcon,
+  Briefcase,
+} from "lucide-react";
 import { Navbar } from "../components/Navbar";
 import { Sidebar } from "../components/Sidebar";
 import { useNavigate } from "react-router";
@@ -8,7 +14,9 @@ export function SearchRoute() {
   const navigate = useNavigate();
   const [origin, setOrigin] = useState("");
   const [destination, setDestination] = useState("");
-  const [showSuggestions, setShowSuggestions] = useState<"origin" | "destination" | null>(null);
+  const [showSuggestions, setShowSuggestions] = useState<
+    "origin" | "destination" | null
+  >(null);
 
   const suggestions = [
     { icon: HomeIcon, label: "Casa", address: "Calle Principal 123" },
@@ -26,15 +34,17 @@ export function SearchRoute() {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <Navbar />
-      
+
       <div className="flex flex-1 overflow-hidden">
         <Sidebar />
-        
+
         <main className="flex-1 flex items-center justify-center p-6">
           <div className="w-full max-w-2xl">
             <div className="bg-white rounded-2xl shadow-lg p-8">
               <h1 className="mb-2 text-gray-900">Planifica tu Ruta</h1>
-              <p className="text-gray-600 mb-8">Ingresa tu origen y destino para encontrar la mejor ruta</p>
+              <p className="text-gray-600 mb-8">
+                Ingresa tu origen y destino para encontrar la mejor ruta
+              </p>
 
               <div className="space-y-4">
                 {/* Origin Input */}
@@ -47,12 +57,14 @@ export function SearchRoute() {
                       value={origin}
                       onChange={(e) => setOrigin(e.target.value)}
                       onFocus={() => setShowSuggestions("origin")}
-                      onBlur={() => setTimeout(() => setShowSuggestions(null), 200)}
+                      onBlur={() =>
+                        setTimeout(() => setShowSuggestions(null), 200)
+                      }
                       placeholder="Ubicación actual"
                       className="w-full pl-12 pr-4 py-4 bg-gray-50 border-2 border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                     />
                   </div>
-                  
+
                   {showSuggestions === "origin" && (
                     <div className="absolute z-10 w-full mt-2 bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden">
                       {suggestions.map((suggestion, index) => {
@@ -68,8 +80,12 @@ export function SearchRoute() {
                           >
                             <Icon className="w-5 h-5 text-gray-400" />
                             <div>
-                              <div className="font-medium text-gray-900">{suggestion.label}</div>
-                              <div className="text-sm text-gray-500">{suggestion.address}</div>
+                              <div className="font-medium text-gray-900">
+                                {suggestion.label}
+                              </div>
+                              <div className="text-sm text-gray-500">
+                                {suggestion.address}
+                              </div>
                             </div>
                           </button>
                         );
@@ -88,7 +104,9 @@ export function SearchRoute() {
                       value={destination}
                       onChange={(e) => setDestination(e.target.value)}
                       onFocus={() => setShowSuggestions("destination")}
-                      onBlur={() => setTimeout(() => setShowSuggestions(null), 200)}
+                      onBlur={() =>
+                        setTimeout(() => setShowSuggestions(null), 200)
+                      }
                       placeholder="¿A dónde vas?"
                       className="w-full pl-12 pr-4 py-4 bg-gray-50 border-2 border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                     />
@@ -109,8 +127,12 @@ export function SearchRoute() {
                           >
                             <Icon className="w-5 h-5 text-gray-400" />
                             <div>
-                              <div className="font-medium text-gray-900">{suggestion.label}</div>
-                              <div className="text-sm text-gray-500">{suggestion.address}</div>
+                              <div className="font-medium text-gray-900">
+                                {suggestion.label}
+                              </div>
+                              <div className="text-sm text-gray-500">
+                                {suggestion.address}
+                              </div>
                             </div>
                           </button>
                         );
@@ -133,9 +155,14 @@ export function SearchRoute() {
               <div className="mt-8 p-4 bg-blue-50 rounded-lg">
                 <h4 className="text-primary mb-2">💡 Consejos Rápidos</h4>
                 <ul className="text-sm text-gray-700 space-y-1">
-                  <li>• Usa tu ubicación actual para sugerencias en tiempo real</li>
+                  <li>
+                    • Usa tu ubicación actual para sugerencias en tiempo real
+                  </li>
                   <li>• Guarda destinos frecuentes para acceder rápidamente</li>
-                  <li>• Revisa los niveles de ocupación para evitar vehículos llenos</li>
+                  <li>
+                    • Revisa los niveles de ocupación para evitar vehículos
+                    llenos
+                  </li>
                 </ul>
               </div>
             </div>
